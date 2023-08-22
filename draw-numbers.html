@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Number Guessing Game</h1>
+  <p>Try to guess the random number between 1 and 100!</p>
+  
+  <input type="number" id="guess" placeholder="Enter your guess">
+  <button id="submitGuess">Submit Guess</button>
+  <p id="message"></p>
+  
+  <script>
+    let targetNumber;
+    let guesses = 0;
+    const guessInput = document.getElementById("guess");
+    const submitButton = document.getElementById("submitGuess");
+    const messageElement = document.getElementById("message");
+
+    function generateNewNumber() {
+      targetNumber = Math.floor(Math.random() * 100) + 1;
+      guesses = 0;
+      messageElement.textContent = "";
+    }
+
+    submitButton.addEventListener("click", function() {
+      const userGuess = parseInt(guessInput.value);
+
+      if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+        messageElement.textContent = "Please enter a valid number between 1 and 100.";
+      } else {
+        guesses++;
+
+        if (userGuess === targetNumber) {
+          messageElement.textContent = `Congratulations! You guessed the number ${targetNumber} correctly in ${guesses} guesses.`;
+          generateNewNumber();
+        } else if (userGuess < targetNumber) {
+          messageElement.textContent = "Too low! Try again.";
+        } else if (userGuess > targetNumber) {
+          messageElement.textContent = "Too high! Try again.";
+        }
+      }
+    });
+
+    // Initial random number generation
+    generateNewNumber();
+  </script>
+</body>
+</html>
+

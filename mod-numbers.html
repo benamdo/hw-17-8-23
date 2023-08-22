@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loop Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Loop Example</h1>
+  <form id="loopForm">
+    <label for="startNumber">Start Number:</label>
+    <input type="number" id="startNumber" required><br>
+    
+    <label for="endNumber">End Number:</label>
+    <input type="number" id="endNumber" required><br>
+    
+    <label for="sentinel">Sentry:</label>
+    <input type="number" id="sentinel" required><br>
+    
+    <label for="skipDivision">Skip Division:</label>
+    <input type="number" id="skipDivision" required><br>
+    
+    <button type="button" id="runLoop">Run Loop</button>
+  </form>
+  
+  <div id="output"></div>
+  
+  <script>
+    const form = document.getElementById("loopForm");
+    const startNumberInput = document.getElementById("startNumber");
+    const endNumberInput = document.getElementById("endNumber");
+    const sentinelInput = document.getElementById("sentinel");
+    const skipDivisionInput = document.getElementById("skipDivision");
+    const outputDiv = document.getElementById("output");
+
+    document.getElementById("runLoop").addEventListener("click", function() {
+      const startNumber = parseInt(startNumberInput.value);
+      const endNumber = parseInt(endNumberInput.value);
+      const sentinel = parseInt(sentinelInput.value);
+      const skipDivision = parseInt(skipDivisionInput.value);
+
+      let output = "";
+
+      for (let i = startNumber; i <= endNumber; i++) {
+        if (i % skipDivision === 0) {
+          continue; // Skip division
+        }
+
+        output += i + " ";
+
+        if (i === sentinel) {
+          break; // Exit the loop
+        }
+      }
+
+      outputDiv.textContent = "Output: " + output;
+    });
+  </script>
+</body>
+</html>

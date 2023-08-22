@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smaller Number Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smaller Number Finder</h1>
+  
+  <label for="firstNumber">Enter the first number:</label>
+  <input type="number" id="firstNumber"><br>
+  
+  <label for="secondNumber">Enter the second number:</label>
+  <input type="number" id="secondNumber"><br>
+  
+  <button type="button" id="calculateButton">Calculate</button>
+  
+  <p id="result"></p>
+  
+  <script>
+    function findSmallerNumber(a, b) {
+      return a < b ? a : b;
+    }
+
+    const firstNumberInput = document.getElementById("firstNumber");
+    const secondNumberInput = document.getElementById("secondNumber");
+    const calculateButton = document.getElementById("calculateButton");
+    const resultParagraph = document.getElementById("result");
+
+    calculateButton.addEventListener("click", function() {
+      const firstNumber = parseFloat(firstNumberInput.value);
+      const secondNumber = parseFloat(secondNumberInput.value);
+
+      const smallerNumber = findSmallerNumber(firstNumber, secondNumber);
+
+      resultParagraph.textContent = `The smaller number is: ${smallerNumber}`;
+    });
+  </script>
+</body>
+</html>

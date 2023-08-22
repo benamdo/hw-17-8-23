@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Power Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Power Calculator</h1>
+  
+  <label for="baseNumber">Enter the base number:</label>
+  <input type="number" id="baseNumber" value="1"><br>
+  
+  <label for="power">Enter the power:</label>
+  <input type="number" id="power" value="0"><br>
+  
+  <button type="button" id="calculateButton">Calculate</button>
+  
+  <p id="result"></p>
+  
+  <script>
+    function calculatePower(base = 1, power = 0) {
+      return Math.pow(base, power);
+    }
+
+    const baseNumberInput = document.getElementById("baseNumber");
+    const powerInput = document.getElementById("power");
+    const calculateButton = document.getElementById("calculateButton");
+    const resultParagraph = document.getElementById("result");
+
+    calculateButton.addEventListener("click", function() {
+      const baseNumber = parseFloat(baseNumberInput.value);
+      const power = parseFloat(powerInput.value);
+
+      const result = calculatePower(baseNumber, power);
+
+      resultParagraph.textContent = `Result: ${result}`;
+    });
+  </script>
+</body>
+</html>
